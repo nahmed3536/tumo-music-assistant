@@ -11,9 +11,15 @@ title = "SynthScribe"
 title_bot = "Music Chatbot"
 title_musicgen = "Audio Generator"
 
+if torch.cuda.is_available():
+    # Set the device to CUDA
+    device = torch.device("cuda")
+else:
+    # Set the device to CPU
+    device = torch.device("cpu")
 
 if "model" not in st.session_state.keys():
-    st.session_state['model'] = musicgen.MusicGen.get_pretrained('medium', device='cuda')
+    st.session_state['model'] = musicgen.MusicGen.get_pretrained('medium', device=device)
 
 if "client" not in st.session_state.keys():
   st.session_state['client'] = OpenAI(
