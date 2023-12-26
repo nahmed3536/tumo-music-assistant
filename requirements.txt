@@ -1,1 +1,5 @@
 streamlit
+openai
+audiocraft
+torch>=2.0
+numpy
